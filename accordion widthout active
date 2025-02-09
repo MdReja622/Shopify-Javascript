@@ -1,0 +1,18 @@
+ // Faq Accordion
+    let expandButtons2 = document.querySelectorAll('.faq-accordion-button');
+    expandButtons2.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            const activeButton = document.querySelector('.faq-accordion-button.active');
+            if (activeButton && activeButton !== button) {
+                activeButton.classList.toggle('active');
+                activeButton.nextElementSibling.style.maxHeight = 0;
+            }
+            button.classList.toggle('active');
+            const content = button.nextElementSibling;
+            if (button.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                content.style.maxHeight = 0;
+            }
+        });
+    });
