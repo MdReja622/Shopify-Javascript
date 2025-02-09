@@ -1,0 +1,19 @@
+// Pricing Accordion
+    let accordionButtons = document.querySelectorAll('.product-details-accordion-button');
+
+    if (accordionButtons.length) {
+        accordionButtons[0].classList.add('active');
+        accordionButtons[0].nextElementSibling.style.maxHeight = accordionButtons[0].nextElementSibling.scrollHeight + 'px';
+    }
+
+    accordionButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const activeButton = document.querySelector('.product-details-accordion-button');
+            if (activeButton && activeButton !== button) {
+                activeButton.classList.remove('active');
+                activeButton.nextElementSibling.style.maxHeight = 0;
+            }
+            button.classList.toggle('active');
+            button.nextElementSibling.style.maxHeight = button.classList.contains('active') ? button.nextElementSibling.scrollHeight + 'px' : 0;
+        });
+    });
